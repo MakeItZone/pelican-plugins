@@ -11,10 +11,10 @@ from os import path
 from bs4 import BeautifulSoup
 from pelican import signals, readers, contents
 
-try:
-    from pandoc_reader import PandocReader
-except ImportError:
-    PandocReader = False
+#try:
+#    from pandoc_reader import PandocReader
+#except ImportError:
+#    PandocReader = False
 
 
 def extract_toc(content):
@@ -43,9 +43,9 @@ def extract_toc(content):
             if p:p.extract()
             toc=tag
 
-    # Pandoc reader (markdown and other formats)
-    if not toc and PandocReader and PandocReader.enabled and extension in PandocReader.file_extensions:
-        toc = soup.find('nav', id='TOC')
+#    # Pandoc reader (markdown and other formats)
+#    if not toc and PandocReader and PandocReader.enabled and extension in PandocReader.file_extensions:
+#        toc = soup.find('nav', id='TOC')
 
     if toc:
         toc.extract()
